@@ -1,7 +1,6 @@
 package com.WWI16AMA.backend_api;
 
 import com.WWI16AMA.backend_api.Account.AccountRepository;
-import com.WWI16AMA.backend_api.Account.Transaction;
 import com.WWI16AMA.backend_api.Billing.BillingTask;
 import com.WWI16AMA.backend_api.Credit.Credit;
 import com.WWI16AMA.backend_api.Credit.CreditRepository;
@@ -75,9 +74,9 @@ public class Application extends SpringBootServletInitializer {
                 enc.encode("koala"));
 
         publisher.publishEvent(new EmailNotificationEvent(mem));
-        mem.getMemberBankingAccount().addTransaction(new Transaction(60.0, Transaction.FeeType.EINZAHLUNG));
-        mem.getMemberBankingAccount().addTransaction(new Transaction(30.0, Transaction.FeeType.GUTSCHRIFTAMT));
-        mem.getMemberBankingAccount().addTransaction(new Transaction(-20.0, Transaction.FeeType.MITLIEGSBEITRAG));
+//         mem.getMemberBankingAccount().addTransaction(new Transaction(60.0, Transaction.FeeType.EINZAHLUNG));
+//         mem.getMemberBankingAccount().addTransaction(new Transaction(30.0, Transaction.FeeType.GUTSCHRIFTAMT));
+//         mem.getMemberBankingAccount().addTransaction(new Transaction(-20.0, Transaction.FeeType.MITGLIEDSBEITRAG));
         mem.setOffices(offices);
         mem.setFlightAuthorization(flList);
         mem.setId(9999);
@@ -91,8 +90,8 @@ public class Application extends SpringBootServletInitializer {
                 enc.encode("koala"));
         mem1.setAddress(adr1);
 
-        mem1.getMemberBankingAccount().addTransaction(new Transaction(-123.0, Transaction.FeeType.GEBÜHRFLUGZEUG));
-        mem1.getMemberBankingAccount().addTransaction(new Transaction(420.0, Transaction.FeeType.GUTSCHRIFTLEISTUNG));
+//        mem1.getMemberBankingAccount().addTransaction(new Transaction(-123.0, Transaction.FeeType.GEBÜHRFLUGZEUG));
+//        mem1.getMemberBankingAccount().addTransaction(new Transaction(420.0, Transaction.FeeType.GUTSCHRIFTLEISTUNG));
         memberRepository.save(mem1);
         System.out.println("MemberID:\t" + mem1.getId());
     }

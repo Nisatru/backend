@@ -17,14 +17,23 @@ public class Transaction {
     @NotNull
     private double amount;
 
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private Account sender;
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private Account receiver;
+
     public Transaction() {
         this.timestamp = LocalDateTime.now();
     }
 
-    public Transaction(double amount, FeeType feeType) {
+    public Transaction(double amount, FeeType feeType, Account sender, Account receiver) {
         this.timestamp = LocalDateTime.now();
         this.amount = amount;
         this.type = feeType;
+        this.sender = sender;
+        this.receiver = receiver;
     }
 
     public LocalDateTime getTimestamp() {
@@ -56,7 +65,7 @@ public class Transaction {
     }
 
     public enum FeeType {
-        MITLIEGSBEITRAG,
+        MITGLIEDSBEITRAG,
         GEBÜHRFLUGZEUG,
         GUTSCHRIFTAMT,
         GUTSCHRIFTLEISTUNG,

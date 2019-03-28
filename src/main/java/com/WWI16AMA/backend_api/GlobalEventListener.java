@@ -44,11 +44,11 @@ public class GlobalEventListener {
 
         Member member = transactionEvent.getMember();
         Account account = member.getMemberBankingAccount();
-        account.addTransaction(new Transaction(transactionEvent.getAmount(), transactionEvent.getType()));
+//        account.addTransaction(new Transaction(transactionEvent.getAmount(), transactionEvent.getType()));
 
-        if (transactionEvent.getType().equals(Transaction.FeeType.GEBÜHR)) {
+        if (transactionEvent.getType().equals(Transaction.FeeType.MITGLIEDSBEITRAG)) {
             account.add2Balance(-transactionEvent.getAmount());
-        } else if (transactionEvent.getType().equals(Transaction.FeeType.ZAHLUNG)) {
+        } else if (transactionEvent.getType().equals(Transaction.FeeType.EINZAHLUNG)) {
             account.add2Balance(transactionEvent.getAmount());
         } else {
             account.add2Balance(transactionEvent.getAmount());
